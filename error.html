@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Error | Vita Applications and Ai Tools</title>
+  <meta name="robots" content="noindex" />
+  <meta name="theme-color" content="#e8eef5" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700&family=Sora:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/error.css" />
+  <link rel="icon" type="image/png" href="assets/vita-emblem-transparent.png" />
+</head>
+<body class="error-page error-scene">
+  <main class="error-main error-main-scene">
+    <div class="error-scene-wrap">
+      <img src="assets/vita-emblem-transparent.png" alt="Vita Systems" width="48" height="48" class="error-logo" />
+      <p class="oops-label">Oops!</p>
+
+      <div class="scene" aria-hidden="true">
+        <svg class="scene-art" viewBox="0 0 420 220" focusable="false">
+          <defs>
+            <linearGradient id="coneGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#ffb347" />
+              <stop offset="100%" stop-color="#f7941d" />
+            </linearGradient>
+            <linearGradient id="lampGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#ffe566" />
+              <stop offset="100%" stop-color="#f7941d" />
+            </linearGradient>
+          </defs>
+          <ellipse cx="210" cy="198" rx="140" ry="11" fill="rgba(0,143,199,0.12)" />
+          <path d="M78 178 L98 98 L118 178 Z" fill="url(#coneGrad)" />
+          <rect x="72" y="176" width="52" height="8" rx="2" fill="#d97810" />
+          <rect x="88" y="118" width="20" height="8" rx="2" fill="#fff" opacity="0.9" />
+          <path d="M302 178 L322 98 L342 178 Z" fill="url(#coneGrad)" />
+          <rect x="296" y="176" width="52" height="8" rx="2" fill="#d97810" />
+          <rect x="312" y="118" width="20" height="8" rx="2" fill="#fff" opacity="0.9" />
+          <rect x="128" y="86" width="14" height="96" rx="3" fill="#4a5563" />
+          <rect x="278" y="86" width="14" height="96" rx="3" fill="#4a5563" />
+          <circle cx="135" cy="78" r="14" fill="url(#lampGrad)" />
+          <circle cx="285" cy="78" r="14" fill="url(#lampGrad)" />
+          <g>
+            <rect x="140" y="108" width="140" height="22" rx="4" fill="#00aeef" />
+            <path d="M140 108 L160 130 L180 108 L200 130 L220 108 L240 130 L260 108 L280 130" fill="none" stroke="#fff" stroke-width="10" />
+          </g>
+          <g>
+            <rect x="140" y="142" width="140" height="22" rx="4" fill="#f7941d" />
+            <path d="M140 142 L160 164 L180 142 L200 164 L220 142 L240 164 L260 142 L280 164" fill="none" stroke="#fff" stroke-width="10" />
+          </g>
+          <g transform="translate(210 58)">
+            <rect x="-34" y="-34" width="68" height="68" rx="8" transform="rotate(45)" fill="#ffd200" stroke="#e6b800" stroke-width="3" />
+            <text id="scene-code" x="0" y="8" text-anchor="middle" font-family="Sora, sans-serif" font-size="26" font-weight="700" fill="#1a2330">503</text>
+          </g>
+        </svg>
+      </div>
+
+      <h1 class="scene-title" id="error-title">Page not found</h1>
+      <p class="scene-lead" id="error-lead">Sorry, the page you're looking for doesn't exist.</p>
+
+      <div class="scene-actions">
+        <a class="btn btn-primary" href="index.html">Go home</a>
+        <a class="btn btn-secondary" href="mailto:info@vitasystems.ai">Contact us</a>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const catalog = {
+      "401": { title: "Unauthorized", lead: "Please sign in and try again." },
+      "403": { title: "Access forbidden", lead: "You don't have permission to view this page." },
+      "404": { title: "Page not found", lead: "Sorry, the page you're looking for doesn't exist." },
+      "500": { title: "Server error", lead: "Something went wrong on our side. Please try again." },
+      "502": { title: "Bad gateway", lead: "A connected service is not responding." },
+      "503": { title: "Service unavailable", lead: "The server is temporarily down. Please check back shortly." },
+      "504": { title: "Gateway timeout", lead: "The request took too long. Please try again." }
+    };
+
+    const params = new URLSearchParams(window.location.search);
+    const code = (params.get("code") || "404").replace(/[^\d]/g, "") || "404";
+    const info = catalog[code] || { title: "Error " + code, lead: "Something went wrong. Please go home and try again." };
+
+    document.getElementById("scene-code").textContent = code;
+    document.getElementById("error-title").textContent = info.title.toUpperCase();
+    document.getElementById("error-lead").textContent = info.lead;
+    document.title = info.title + " (" + code + ") | Vita Applications";
+  </script>
+</body>
+</html>

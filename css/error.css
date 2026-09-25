@@ -1,0 +1,104 @@
+/* Simple Vita error / downtime page */
+
+.error-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.error-scene {
+  background: linear-gradient(180deg, #eef3f8 0%, #e2eaf2 100%);
+}
+
+.error-main-scene {
+  flex: 1;
+  display: grid;
+  place-items: center;
+  padding: 2rem 1rem;
+}
+
+.error-scene-wrap {
+  width: min(100%, 480px);
+  text-align: center;
+}
+
+.error-logo {
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 0.75rem;
+  object-fit: contain;
+}
+
+.oops-label {
+  margin: 0 0 0.25rem;
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #2a3544;
+}
+
+.scene {
+  margin: 0 auto 0.5rem;
+  max-width: 360px;
+}
+
+.scene-art {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.scene-title {
+  margin: 0 0 0.45rem;
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #2a3544;
+}
+
+.scene-lead {
+  margin: 0 auto 1.35rem;
+  max-width: 28rem;
+  color: #5b6573;
+  font-size: 1rem;
+}
+
+.scene-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.65rem;
+}
+
+.scene-actions .btn-primary {
+  color: #fff;
+  background: #3a4656;
+  box-shadow: none;
+}
+
+.scene-actions .btn-primary:hover {
+  color: #fff;
+  filter: brightness(1.08);
+}
+
+.scene-actions .btn-secondary {
+  color: #2a3544;
+  border-color: rgba(42, 53, 68, 0.35);
+  background: transparent;
+}
+
+.scene-actions .btn-secondary:hover {
+  color: #2a3544;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+@media (max-width: 480px) {
+  .scene-actions {
+    flex-direction: column;
+  }
+
+  .scene-actions .btn {
+    width: 100%;
+  }
+}
